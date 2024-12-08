@@ -1,20 +1,20 @@
--- Auto-Build Script for War Tycoon
--- Developed for Delta Executor by Gamecraft20410
+-- Auto-Build Script für War Tycoon
+-- Entwickelt für Delta Executor von Gamecraft20410
 
 local player = game.Players.LocalPlayer
 local tycoon = nil
 
--- Function to find your Tycoon
+-- Funktion zum Finden des Tycoons
 local function findTycoon()
     for _, v in pairs(workspace.Tycoons:GetChildren()) do
-        if v.Owner.Value == player then
+        if v:FindFirstChild("Owner") and v.Owner.Value == player then
             tycoon = v
             break
         end
     end
 end
 
--- Function to purchase all buttons
+-- Funktion zum Kauf aller Schaltflächen
 local function purchaseButtons()
     if tycoon then
         for _, button in pairs(tycoon.Buttons:GetChildren()) do
@@ -27,7 +27,7 @@ local function purchaseButtons()
     end
 end
 
--- Main Execution
+-- Hauptausführung
 findTycoon()
 
 if tycoon then
